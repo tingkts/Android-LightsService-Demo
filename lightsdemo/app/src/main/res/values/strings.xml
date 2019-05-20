@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LightsDemo</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="spinner_title">Select Light ID: </string>
+    <string name="button_title">Pulse</string>
+</resources>
