@@ -3,7 +3,7 @@ LightsService demo for check the readiness of  LED driver/HIDL in Android 9
 
 
 
-- codebase_9.0.0_r3\packages\apps\LightsDemo is the codebase app project embeded in the entire platform source code.
+- codebase_9.0.0_r3\packages\apps\LightsDemo is the codebase app project embeded in the entire platform source code and it's built with Android cross-compile build system.
 
   
 
