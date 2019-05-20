@@ -1,5 +1,5 @@
 # Android-LightsService-Demo
-LightsService demo for check the readiness of  LED driver/HIDL in Android 9 
+LightsService demo for the check of readiness of LED driver/HIDL in Android 9 
 
 
 
