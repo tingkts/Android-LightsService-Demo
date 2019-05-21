@@ -9,3 +9,6 @@ LightsService demo for the check of readiness of LED driver/HIDL in Android 9
 
 - lightsdemo and notificationdemo are the standalone app project using Android Studio 3.4
 
+
+
+helper project: [keytool-importkeypair](https://github.com/getfatday/keytool-importkeypair "/keytool-importkeypair")
