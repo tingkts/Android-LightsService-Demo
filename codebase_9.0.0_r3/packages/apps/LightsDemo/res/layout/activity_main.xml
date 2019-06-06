@@ -15,14 +15,13 @@
         android:visibility="gone"
          />
 
-    <EditText
-        android:id="@+id/editText"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_margin="30dp"/>
+        android:layout_margin="30dp"
+        />
+
 
     <Button
         android:id="@+id/button"

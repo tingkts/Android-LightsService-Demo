@@ -3,4 +3,9 @@
 
     <string name="on">on</string>
     <string name="off">off</string>
+
+    <string-array name="color">
+        <item>Red</item>
+        <item>Green</item>
+    </string-array>
 </resources>

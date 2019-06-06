@@ -1,4 +1,4 @@
-package ting.lightsdemo;
+package ting.lightsdemo2;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,15 +19,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 public class MainActivity extends Activity {
-    private final static String LOGTAG = MainActivity.class.getName();
+    private final static String TAG = MainActivity.class.getName();
 
     private Button buttonOn;
     private Button buttonOff;
 
-    private EditText editTextColor;
+    private Spinner spinner;
 
-    private int color;
+    private int color = Color.RED;
 
     private IPowerManager pm;
 
@@ -41,16 +45,36 @@ public class MainActivity extends Activity {
         buttonOn = findViewById(R.id.button);
         buttonOff = findViewById(R.id.button2);
 
-        editTextColor = findViewById(R.id.editText);
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> lunchList = ArrayAdapter.createFromResource(MainActivity.this,
+                R.array.color,
+                android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(lunchList);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onItemSelected: " + position);
+                if (position == 0) {
+                    Log.d(TAG, "onItemSelected: red");
+                    color = Color.RED;
+                } else if (position == 1) {
+                    Log.d(TAG, "onItemSelected: green");
+                    color = Color.GREEN;   
+                }
+            }
 
-        editTextColor.setText("0x"+Integer.toHexString(Color.RED));
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d(TAG, "here");
+            }
+        } );
 
         buttonOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    color = Integer.parseInt(editTextColor.getText().toString());
-                    pm.setAttentionLight(true, /*Color.RED*/color);
+                    Log.d(TAG, "setAttentionLight: true, " + Color.valueOf(color));
+                    pm.setAttentionLight(true, color);
                 } catch (RemoteException e) {
                 }
             }
@@ -61,14 +85,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 try {
-                    color = Integer.parseInt(editTextColor.getText().toString());
-                    pm.setAttentionLight(false, /*Color.RED*/color);
+                    Log.d(TAG, "setAttentionLight: false, " + Color.valueOf(color));
+                    pm.setAttentionLight(false, color);
                 } catch (RemoteException e) {
                 }
             }
         });
 
-        // TODO: why runtime cann't find class def. of LightsManager.clasee in dex search path?
         //LightsManager lightsManager = LocalServices.getService(LightsManager.class);
         //Log.d(LOGTAG, "onCreate: lightsManager=" + lightsManager);
     }
